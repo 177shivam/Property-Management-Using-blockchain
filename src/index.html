@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Property Registeration</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#" style="color: white" >Bosch Blockchain</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="container" style="width: 850px;">
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-center">Property Registration</h1>
+            <hr/>
+            <br/>
+        </div>
+
+          <form onsubmit="App.addProperty(); return false;" role="form" id="addProperty" class="form-horizontal">
+            <div class="form-group">
+              <label for="ownername" class="col-sm-2 control-label">Owner Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="ownername" placeholder="Shivam Sharma" required>
+              </div>
+            </div>
+             <div class="form-group">
+              <label for="ownerid" class="col-sm-2 control-label">Owner Id</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="ownerid" placeholder="A123B" required>
+              </div>
+            </div>
+            <br>
+            <div>
+             <div class="form-group">
+              <label for="passcode" class="col-sm-2 control-label">Passcode</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="passcode" placeholder="C124B" required>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="proptype" class="col-sm-2 control-label" >Property Type</label>
+            <form id="myform" >
+            <div class="radio">
+              <label>
+                <input type="radio" id="Build_Up" name="do"  value="1" aria-label="Build Up" required> Build Up
+              </label>
+              <label>
+                <input type="radio" id="Land" name="do" value="2" aria-label="..." required> Land
+              </label>
+            </div>
+            </form>
+          </div>  
+            <div class="form-group">
+              <label for="proptype" class="col-sm-2 control-label" >Address</label>
+              <div class="col-sm-10">
+              <textarea class="form-control" rows="3" id="address" placeholder="Pune,India" required></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="proptype" class="col-sm-2 control-label" >Property Dimension</label>
+              <div class="col-sm-10">
+              <textarea class="form-control" rows="3" id="dimension" placeholder="Length= 30m ,Breadth=30m, no. of floor= 3" required></textarea>
+              </div>
+            </div>
+             <div class="form-group">
+              <label for="uniqueid" class="col-sm-2 control-label">Property Unique Id</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="uniqueid" placeholder="3600A2S" required>
+              </div><br>
+            </div>
+            <br>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+          <br>
+          <!--<button onclick="App.display();" class="btn btn-default" type="submit">Button</button>-->
+
+          <div class="col-lg-12">
+            <h3 class="text-center">Search  </h3>
+            <hr/>
+            <br/>
+          </div>
+          <br><br>
+          <form onsubmit="App.searchbypropid(); return false;" role="form" id="searchProperty">
+            <div class="form-group">
+              <label for="propid">Search by Property Unique Id</label>
+              <input type="text" class="form-control" id="propid" placeholder="Property Id" required>
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+          </form>
+          <br><br>
+          <div class="col-lg-12">
+            <h3 class="text-center">Table showing Search Result </h3>
+            <hr/>
+          </div>
+          <table class="table">
+            <tbody>
+                <tr>
+                  <th>Owner Name</th>
+                    <td><span class="disp-name"></span></td>
+                </tr>
+                <tr>
+                  <th>Owner Id</th>
+                    <td><span class="disp-nid"></span></td>
+                </tr>
+                <tr>
+                  <th>Passcode</th>
+                    <td><span class="disp-code"></span></td>
+                </tr>
+                <tr>
+                  <th>Property Type</th>
+                    <td><span class="disp-type"></span></td>
+                </tr>
+                <tr>
+                  <th>Property Address</th>
+                    <td><span class="disp-address"></span></td>
+                </tr>
+                <tr>
+                  <th>Property Dimension</th>
+                    <td><span class="disp-dimension"></span></td>
+                </tr>
+                <tr>
+                  <th>Property Unique Id</th>
+                    <td><span class="disp-pid"></span></td>
+                </tr>
+            </tbody>
+          </table>
+            <br>
+          <div class="col-lg-12">
+            <h3 class="text-center">Property Transfer</h3>
+            <hr/>
+            <br/>
+          </div>
+
+          <form onsubmit="App.transferprop(); return false;" role="form" id="transferproperty">
+            <div class="form-group">
+              <label for="transferpropid">Property Unique Id</label>
+              <input type="text" class="form-control" id="transferpropid" placeholder="3600A2S" required>
+            </div>
+            <div class="form-group">
+              <label for="transferowner">Buyer Name</label>
+              <input type="text" class="form-control" id="transferowner" placeholder="Rahul Kumar" required>
+            </div>
+            <div class="form-group">
+              <label for="transferid">Buyer Id</label>
+              <input type="text" class="form-control" id="transferid" placeholder="A123B" required>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+          
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
